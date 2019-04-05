@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 import Friend from "./Friend";
 
 const Friends = props => {
