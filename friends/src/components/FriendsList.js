@@ -1,10 +1,10 @@
 import React from "react";
 import Friend from "./Friend";
 
-const Friends = props => {
-  return props.friends.map(friend => {
+const FriendsList = props => {
+  return props.friendsList.map(friend => {
     return <Friend friend={friend} />;
   });
 };
 
-export default Friends;
+export default FriendsList;
