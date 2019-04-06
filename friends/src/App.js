@@ -4,6 +4,7 @@ import "./App.css";
 import { Route } from "react-router-dom";
 
 import FriendsList from "./components/FriendsList";
+import FriendForm from "./components/FriendForm";
 
 class App extends Component {
   constructor() {
@@ -26,6 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <FriendForm friendsDB={this.state.friends} />
         <Route
           path="/"
           render={props => (

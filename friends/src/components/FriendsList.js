@@ -1,5 +1,5 @@
 import React from "react";
-import "./FriendList.css";
+import "./FriendsList.css";
 import Friend from "./Friend";
 
 const FriendsList = props => {
