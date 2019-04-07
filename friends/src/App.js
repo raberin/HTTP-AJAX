@@ -41,6 +41,7 @@ class App extends Component {
   };
 
   updateFriends = newFriendsArray => {
+    //This updates state with the new Friends array from the database
     this.setState({ friends: newFriendsArray });
   };
 

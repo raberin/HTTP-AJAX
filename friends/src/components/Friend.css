@@ -8,3 +8,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+.display-on {
+  display: block;
+}
+
+.display-off {
+  display: none;
+}
