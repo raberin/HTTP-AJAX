@@ -24,10 +24,23 @@ class App extends Component {
         console.log(err);
       });
   }
+
+  postMessage = friend => {
+    axios
+      //POST requests takes in a body of data the second parameter
+      .post("http://localhost:5000/friends", friend)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div className="App">
-        <FriendForm friendsDB={this.state.friends} />
+        <FriendForm postMessage={this.postMessage} />
         <Route
           path="/"
           render={props => (

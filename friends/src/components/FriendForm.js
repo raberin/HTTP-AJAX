@@ -1,5 +1,4 @@
 import React from "react";
-import { throws } from "assert";
 
 class FriendForm extends React.Component {
   constructor(props) {
@@ -15,36 +14,53 @@ class FriendForm extends React.Component {
   }
 
   changeHandler = event => {
+    //Changes the state/tracks the value of the friendPost whatever is being inputed on the form
     this.setState({
-      ...this.state.friendPost,
-      [event.target.name]: event.target.value
+      friendPost: {
+        ...this.state.friendPost,
+        //Since on the inputs theres a "name" value it can be used as a key to change
+        //All the inputs dynamically instead of creating a handler for all of em
+        [event.target.name]: event.target.value
+      }
     });
+  };
+
+  postMessage = event => {
+    event.preventDefault();
+    //Runs the postMessage fxn in App.js, and adds the friendPost
+    //object into the database
+    this.props.postMessage(this.state.friendPost);
   };
 
   render() {
     return (
-      <form>
+      <div className="post-form-wrapper">
         <h2>Add a friend</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          onChange={this.changeHandler}
-        />
-        <input
-          type="number"
-          name="age"
-          placeholder="Age"
-          onChange={this.changeHandler}
-        />
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          onChange={this.changeHandler}
-        />
-        <button type="submit">Submit</button>
-      </form>
+        <form onSubmit={this.postMessage}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            onChange={this.changeHandler}
+            value={this.state.friendPost.name}
+          />
+          <input
+            type="number"
+            name="age"
+            placeholder="Age"
+            onChange={this.changeHandler}
+            value={this.state.friendPost.age}
+          />
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            onChange={this.changeHandler}
+            value={this.state.friendPost.email}
+          />
+          <button type="submit">Post</button>
+        </form>
+      </div>
     );
   }
 }
