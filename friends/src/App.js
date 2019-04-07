@@ -40,6 +40,10 @@ class App extends Component {
       });
   };
 
+  updateFriends = newFriendsArray => {
+    this.setState({ friends: newFriendsArray });
+  };
+
   render() {
     return (
       <div className="App">
@@ -47,7 +51,11 @@ class App extends Component {
         <Route
           path="/"
           render={props => (
-            <FriendsList {...props} friendsList={this.state.friends} />
+            <FriendsList
+              {...props}
+              friendsList={this.state.friends}
+              updateFriends={this.updateFriends}
+            />
           )}
         />
       </div>

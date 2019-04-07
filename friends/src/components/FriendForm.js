@@ -1,4 +1,5 @@
 import React from "react";
+import "./FriendForm.css";
 
 class FriendForm extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class FriendForm extends React.Component {
   postFriend = event => {
     event.preventDefault();
     //Runs the postMessage fxn in App.js, and adds the friendPost
-    //object into the databasemkmkmknkn
+    //object into the database
     this.props.postFriend(this.state.friendPost);
     this.setState({
       friendPost: {
