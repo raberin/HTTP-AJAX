@@ -15,6 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    //Fetches the data from the server and updates the friends array on state
     axios
       .get("http://localhost:5000/friends")
       .then(response => {
@@ -25,12 +26,12 @@ class App extends Component {
       });
   }
 
-  postMessage = friend => {
+  postFriend = friend => {
     axios
       //POST requests takes in a body of data the second parameter
       .post("http://localhost:5000/friends", friend)
       .then(res => {
-        console.log(res);
+        this.setState({ friends: res.data });
       })
       .catch(err => {
         console.log(err);
@@ -40,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <FriendForm postMessage={this.postMessage} />
+        <FriendForm postFriend={this.postFriend} />
         <Route
           path="/"
           render={props => (

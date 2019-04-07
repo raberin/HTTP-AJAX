@@ -14,6 +14,7 @@ class FriendForm extends React.Component {
   }
 
   changeHandler = event => {
+    event.persist();
     //Changes the state/tracks the value of the friendPost whatever is being inputed on the form
     this.setState({
       friendPost: {
@@ -25,18 +26,18 @@ class FriendForm extends React.Component {
     });
   };
 
-  postMessage = event => {
+  postFriend = event => {
     event.preventDefault();
     //Runs the postMessage fxn in App.js, and adds the friendPost
     //object into the database
-    this.props.postMessage(this.state.friendPost);
+    this.props.postFriend(this.state.friendPost);
   };
 
   render() {
     return (
       <div className="post-form-wrapper">
         <h2>Add a friend</h2>
-        <form onSubmit={this.postMessage}>
+        <form onSubmit={this.postFriend}>
           <input
             type="text"
             name="name"
