@@ -31,6 +31,8 @@ class App extends Component {
       //POST requests takes in a body of data the second parameter
       .post("http://localhost:5000/friends", friend)
       .then(res => {
+        //Once the friendPost object is added into database
+        //The state is set to update the newly updated database
         this.setState({ friends: res.data });
       })
       .catch(err => {

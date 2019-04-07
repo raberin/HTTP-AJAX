@@ -8,13 +8,11 @@ class FriendForm extends React.Component {
         name: "",
         age: "",
         email: ""
-        // id: props.friendsDB.length
       }
     };
   }
 
   changeHandler = event => {
-    event.persist();
     //Changes the state/tracks the value of the friendPost whatever is being inputed on the form
     this.setState({
       friendPost: {
@@ -29,8 +27,15 @@ class FriendForm extends React.Component {
   postFriend = event => {
     event.preventDefault();
     //Runs the postMessage fxn in App.js, and adds the friendPost
-    //object into the database
+    //object into the databasemkmkmknkn
     this.props.postFriend(this.state.friendPost);
+    this.setState({
+      friendPost: {
+        name: "",
+        age: "",
+        email: ""
+      }
+    });
   };
 
   render() {
