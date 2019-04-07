@@ -6,7 +6,7 @@ class Friend extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: false,
+      editButtonClicked: false,
       updatedPost: {
         name: "",
         age: "",
@@ -51,13 +51,23 @@ class Friend extends React.Component {
     });
   };
 
+  showEditForm = () => {
+    this.setState(prevState => {
+      if (prevState.editButtonClicked === false) {
+        return { editButtonClicked: true };
+      } else {
+        return { editButtonClicked: !prevState.editButtonClicked };
+      }
+    });
+  };
+
   submitEditFriend = event => {
     event.preventDefault();
     //Runs the postMessage fxn in App.js, and adds the friendPost
     //object into the database
     this.putFriend(this.state.updatedPost);
     this.setState({
-      friendPost: {
+      updatedPost: {
         name: "",
         age: "",
         email: ""
@@ -69,10 +79,14 @@ class Friend extends React.Component {
     return (
       <div className="friend-card">
         <div
-          className={this.state.edit === false ? "display-on" : "display-off"}
+          className={
+            this.state.editButtonClicked === false
+              ? "display-on"
+              : "display-off"
+          }
         >
           <div className="friend-card-buttons">
-            <button onClick={this.editItem}>Edit</button>
+            <button onClick={this.showEditForm}>Edit</button>
             <span onClick={this.deleteItem}>X</span>
           </div>
           <h2>{`Name: ${this.props.friend.name}`}</h2>
@@ -81,7 +95,13 @@ class Friend extends React.Component {
           <p>{`Email: ${this.props.friend.email}`}</p>
         </div>
 
-        <div>
+        <div
+          className={
+            this.state.editButtonClicked === false
+              ? "display-off"
+              : "display-on"
+          }
+        >
           <h2>Edit Friend</h2>
           <form onSubmit={this.submitEditFriend}>
             <input
@@ -105,7 +125,7 @@ class Friend extends React.Component {
               onChange={this.changeHandler}
               placeholder={`${this.props.friend.email}`}
             />
-            <button>Submit</button>
+            <button onClick={this.showEditForm}>Submit</button>
           </form>
         </div>
       </div>
