@@ -29,6 +29,7 @@ class Friend extends React.Component {
   };
 
   putFriend = updatedPost => {
+    //Updates the current item using with the updatedPost object
     axios
       .put(`http://localhost:5000/friends/${this.props.friend.id}`, updatedPost)
       .then(res => {
@@ -52,6 +53,7 @@ class Friend extends React.Component {
   };
 
   showEditForm = () => {
+    //Checks prevState of editButton, if it was clicked set it to true if not flip the boolean
     this.setState(prevState => {
       if (prevState.editButtonClicked === false) {
         return { editButtonClicked: true };
