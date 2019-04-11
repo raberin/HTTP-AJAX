@@ -1,0 +1,18 @@
+.friend-card {
+  border: solid 1px black;
+  width: 30%;
+  margin-top: 3%;
+}
+
+.friend-card-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.display-on {
+  display: block;
+}
+
+.display-off {
+  display: none;
+}
